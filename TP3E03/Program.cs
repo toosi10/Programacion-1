@@ -23,14 +23,52 @@ namespace TP3E03
 {
     class Program
     {
+        public static bool EsPrimo(int num)
+        {
+            int j = 0;
+            for (int i = 2; i <= num; i++)
+            {
+                if (num % i == 0)
+                {
+                    j++;
+                }
+            }
+            if (j == 1)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public static void Mostrar(int[] vector, int indice)
+        {
+            for (int i = 0; i < indice; i++)
+            {
+                Console.Write($"  {vector[i]} ");
+            }
+        }
+
         static void Main(string[] args)
         {
             // Variables
-            int[] primos = new int[100];
+            int[] primos = new int[200];
+            int j = 0;
 
             Console.Clear();
-            
 
+            for (int i = 2; i <= 1000; i++)
+            {
+                if (EsPrimo(i))
+                {
+                    primos[j] = i;
+                    j++;
+                }
+            }
+
+            Console.WriteLine("\n");
+            Mostrar(primos, j);
+
+            Console.WriteLine($"\n\nSe generaron {j} numeros primos");
 
             Console.Write("\n\nPresione una tecla para salir...");
             Console.ReadKey();
